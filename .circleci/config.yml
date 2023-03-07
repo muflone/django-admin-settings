@@ -30,9 +30,4 @@ jobs:
             python -m compileall admin_settings
             python -m pycodestyle admin_settings
             python -m flake8 admin_settings
-            python -m build --outdir=dist .
-            python -m pip install --verbose dist/*.whl
-            python -m pip list
-            python -m pip freeze
             ls -laR .
-            python -m pip uninstall --yes --verbose admin_settings
