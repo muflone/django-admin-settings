@@ -99,3 +99,17 @@ server to run Python applications.
 
 When you're ready open a web browser and navigate the page you set
 during the server startup (e.g. http://localhost:8000/admin)
+
+# Models
+
+## ListDisplay
+
+The `ListDisplay` models allows you to set the visible fields in the records
+list page in Django Admin.
+
+You can simply configure your models by settings:
+
+- Model
+- Field name
+- Sort order number
+- Active status

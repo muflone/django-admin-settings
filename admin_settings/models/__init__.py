@@ -18,29 +18,4 @@
 #  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ##
 
-from django.contrib import admin
-from django.db.utils import OperationalError, ProgrammingError
-
-from .extras.get_admin_models import get_admin_models
-from .models import ListDisplay, ListDisplayAdmin
-
-
-# Models registration
-admin.site.register(ListDisplay, ListDisplayAdmin)
-
-
-# Customize Admin models
-admin_models = get_admin_models()
-for model_name, model in admin_models.items():
-    # Customize list_display
-    try:
-        if records := ListDisplay.objects.filter(
-                model=model_name).order_by('order'):
-            # Add the fields to model list_display
-            model.list_display = []
-            for item in records:
-                if item.is_active:
-                    model.list_display.append(item.field)
-    except (OperationalError, ProgrammingError):
-        # If the model doesn't yet exist skip the customization
-        pass
+from .list_display import ListDisplay, ListDisplayAdmin            # noqa: F401
