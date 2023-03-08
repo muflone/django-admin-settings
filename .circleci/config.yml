@@ -27,7 +27,7 @@ jobs:
           name: check code
           command: |
             . venv/bin/activate
-            python -m compileall admin_settings
-            python -m pycodestyle admin_settings
-            python -m flake8 admin_settings
+            python -m compileall django_admin_settings
+            python -m pycodestyle django_admin_settings
+            python -m flake8 django_admin_settings
             ls -laR .
