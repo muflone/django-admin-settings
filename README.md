@@ -61,3 +61,15 @@ You can simply configure your models by settings:
 - Field name
 - Sort order number
 - Active status
+
+## ListFilter
+
+The `ListFilter` models allows you to create filters in the records list page
+in Django Admin.
+
+You can simply configure your models by settings:
+
+- Model
+- Field name
+- Sort order number
+- Active status
