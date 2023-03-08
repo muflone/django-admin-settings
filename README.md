@@ -49,3 +49,15 @@ You can simply configure your models by settings:
 - Field name
 - Sort order number
 - Active status
+
+## ListDisplayLink
+
+The `ListDisplayLink` models allows you to set the clickable fields in the
+records list page in Django Admin.
+
+You can simply configure your models by settings:
+
+- Model
+- Field name
+- Sort order number
+- Active status

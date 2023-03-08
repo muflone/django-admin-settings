@@ -22,11 +22,13 @@ from django.contrib import admin
 from django.db.utils import OperationalError, ProgrammingError
 
 from .extras.get_admin_models import get_admin_models
-from .models import ListDisplay, ListDisplayAdmin
+from .models import (ListDisplay, ListDisplayAdmin,
+                     ListDisplayLink, ListDisplayLinkAdmin)
 
 
 # Models registration
 admin.site.register(ListDisplay, ListDisplayAdmin)
+admin.site.register(ListDisplayLink, ListDisplayLinkAdmin)
 
 
 # Customize Admin models
@@ -41,6 +43,18 @@ for model_name, model in admin_models.items():
             for item in records:
                 if item.is_active:
                     model.list_display.append(item.field)
+    except (OperationalError, ProgrammingError):
+        # If the model doesn't yet exist skip the customization
+        pass
+    # Customize list_display_links
+    try:
+        if records := ListDisplayLink.objects.filter(
+                model=model_name).order_by('order'):
+            # Add the fields to model list_display
+            model.list_display_links = []
+            for item in records:
+                if item.is_active:
+                    model.list_display_links.append(item.field)
     except (OperationalError, ProgrammingError):
         # If the model doesn't yet exist skip the customization
         pass
