@@ -18,6 +18,7 @@
 #  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ##
 
+from django.conf import settings
 from django.contrib import admin
 from django.db.utils import OperationalError, ProgrammingError
 
@@ -33,6 +34,13 @@ admin.site.register(ListDisplay, ListDisplayAdmin)
 admin.site.register(ListDisplayLink, ListDisplayLinkAdmin)
 admin.site.register(ListFilter, ListFilterAdmin)
 
+# Admin customization
+if setting := settings.ADMIN_SITE_HEADER:
+    admin.site.site_header = setting
+if setting := settings.ADMIN_SITE_TITLE:
+    admin.site.site_title = setting
+if setting := settings.ADMIN_INDEX_TITLE:
+    admin.site.index_title = setting
 
 # Customize Admin models
 admin_models = get_admin_models()

@@ -73,3 +73,9 @@ You can simply configure your models by settings:
 - Field name
 - Sort order number
 - Active status
+
+# Django settings
+
+- `ADMIN_INDEX_TITLE`: Index page title
+- `ADMIN_SITE_HEADER`: Administration header
+- `ADMIN_SITE_TITLE`: Administration pages title
