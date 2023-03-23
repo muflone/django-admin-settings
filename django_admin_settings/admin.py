@@ -27,6 +27,17 @@ from .extras.get_class_from_module import get_class_from_module
 from .models import (ListDisplay, ListDisplayAdmin,
                      ListDisplayLink, ListDisplayLinkAdmin,
                      ListFilter, ListFilterAdmin)
+from .text_input_filter import AdminTextInputFilter
+
+
+class FieldTextFilter(AdminTextInputFilter):
+    """
+    Search exact values for the field `field`
+    """
+    parameter_name = 'field'
+    title = 'Field'
+    lookup_condition = None
+    lookup_condition_advanced = None
 
 
 # Models registration
